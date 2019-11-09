@@ -1,5 +1,5 @@
 {% set name = "rocm-opencl-runtime" %}
-{% set version = "2.7.0" %}
+{% set version = "2.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/roc-{{ version }}.tar.gz
-    sha256: 791f361dc174d82452af2a697508620ac51d66afc18d5d1d54a22c7d2a6544d0
+    sha256: 47d6f623561b574b1c58740804beb48b5134232cd257468ba582f8d505176ad2
     patches:
       - use_packages.diff
 
