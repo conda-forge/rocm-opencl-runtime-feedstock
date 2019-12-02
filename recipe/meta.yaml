@@ -10,13 +10,14 @@ source:
     sha256: 791f361dc174d82452af2a697508620ac51d66afc18d5d1d54a22c7d2a6544d0
     patches:
       - use_packages.diff
+      - dont_crash_if_no_permission.patch
 
   - url: https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/978b4b3a29a3aebc86ce9315d5c5963e88722d03.zip
     sha256: 6c79fddd59e92182d7bc9048415b51e60e49f952b11eeffd69cccb3081359f78
     folder: api/opencl/khronos/icd
 
 build:
-  number: 0
+  number: 1
   skip: True  # [not linux]
   merge_build_host: True
   ignore_run_exports:

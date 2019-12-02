@@ -1,0 +1,29 @@
+commit 6251124709ecffca9057c2af1eed64dbd065ee46
+Author: Isuru Fernando <isuruf@gmail.com>
+Date:   Mon Dec 2 02:08:05 2019 -0600
+
+    Don't crash if no device permission
+
+diff --git a/runtime/device/rocm/rocdevice.cpp b/runtime/device/rocm/rocdevice.cpp
+index 4cba9d7..752b79d 100644
+--- a/runtime/device/rocm/rocdevice.cpp
++++ b/runtime/device/rocm/rocdevice.cpp
+@@ -761,7 +761,9 @@ bool Device::create(bool sramEccEnabled) {
+     }
+   }
+ 
+-  xferQueue();
++  if (xferQueue() == nullptr) {
++    return false;
++  }
+ 
+   return true;
+ }
+@@ -1804,6 +1806,7 @@ VirtualGPU* Device::xferQueue() const {
+     thisDevice->xferQueue_ = reinterpret_cast<VirtualGPU*>(thisDevice->createVirtualDevice());
+     if (!xferQueue_) {
+       LogError("Couldn't create the device transfer manager!");
++      return nullptr;
+     }
+   }
+   xferQueue_->enableSyncBlit();
