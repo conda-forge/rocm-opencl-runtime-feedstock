@@ -1,5 +1,5 @@
 {% set name = "rocm-opencl-runtime" %}
-{% set version = "2.7.0" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/roc-{{ version }}.tar.gz
-    sha256: 791f361dc174d82452af2a697508620ac51d66afc18d5d1d54a22c7d2a6544d0
+    sha256: c64612fb68289e68fd796987652fc74021d243b088f876ae0a0fc23e9cb6eb28
     patches:
       - use_packages.diff
       - dont_crash_if_no_permission.patch
@@ -17,7 +17,7 @@ source:
     folder: api/opencl/khronos/icd
 
 build:
-  number: 1
+  number: 0
   skip: True  # [not linux]
   merge_build_host: True
   ignore_run_exports:
