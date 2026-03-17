@@ -17,9 +17,9 @@ source:
     folder: api/opencl/khronos/icd
 
 build:
-  number: 1
-  skip: True  # [not linux]
-  merge_build_host: True
+  number: 2
+  skip: true  # [not linux]
+  merge_build_host: true
   ignore_run_exports:
     - ocl-icd
 
@@ -29,11 +29,6 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake
     - make
-    - {{ cdt('mesa-libgl-devel') }}
-    - {{ cdt('libx11-devel') }}
-    - {{ cdt('xorg-x11-proto-devel') }}
-    - {{ cdt('numactl-devel') }}
-    - {{ cdt('pciutils-devel') }}
   host:
     - clangdev 9.*
     - llvmdev 9.*
@@ -45,6 +40,10 @@ requirements:
     - rocr-runtime {{ version }}
     - rocm-comgr {{ version }}
     - elfutils
+    - libgl-devel                  None
+    - xorg-libx11              None
+    - xorg-xorgproto                   None
+    - libnuma                   None
   run:
     - roct-thunk-interface {{ version }}
     - rocr-runtime {{ version }}
